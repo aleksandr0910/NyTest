@@ -134,7 +134,7 @@ class TestRutenett {
     public static void main (String[] arg) {
 	System.out.println("** Test Rutenett **");
 
-	// testKonstruktoerUtenRutenett();
+	testKonstruktoerUtenRutenett();
 	// testFyllMedTilfeldigeCeller();
 	// testHentCelle();
 	// testTegnRutenett();

@@ -1,22 +1,19 @@
-import java.util.ArrayList;
+
 
 class Celle{
         //legger inn instansvariablene til klassen
-        boolean levende;
-        ArrayList<Celle> naboer;
-        int antNaboer;
-        int antLevendeNaboer;
+        boolean levende = false;
+        Celle[] naboer = new Celle[8];
+        int antNaboer = 0;
+        int antLevendeNaboer = 0;
 
         //Definerer konstruktørens og dermed instansvariablenes verdier
-    public Celle(){
-        levende = false;
-        naboer = new ArrayList<>();
-        antNaboer = 0;
-        antLevendeNaboer = 0;
+    public void Celle(){
+       
         }
 
     public static void main(String[]args){
-        new Celle();
+        
     }
     public void settLevende(){
         levende = true;
@@ -39,13 +36,13 @@ class Celle{
         }
     }
     public void leggTilNabo(Celle nabo){
-        naboer.add(nabo);
+        naboer[antNaboer] = nabo;
         antNaboer++;
     }
     public void tellLevendeNaboer(){
-        antLevendeNaboer = 0;
-        for (Celle nabo: naboer){
-            if (nabo.levende == true){ 
+        antLevendeNaboer = 0; 
+        for (int i = 0; i < antNaboer; i++){ //Øker for hver nabo som er lagt til i leggTilNabo funksjonen, dermed bare naboer som har status true eller false
+            if (naboer[i].erLevende() == true){ 
                 
                 antLevendeNaboer++;
                 
