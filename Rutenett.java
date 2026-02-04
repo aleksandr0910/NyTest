@@ -1,6 +1,5 @@
 import java.util.Random;
 
-
 class Rutenett{
     int antRader;
     int antKolonner;
@@ -10,29 +9,27 @@ class Rutenett{
         antKolonner = k;
         rutene = new Celle[r][k];
     }
-    public static void main(String[]args){
-        
-    }
+    
     public void lagCelle(int rad, int kolonne){
         Celle cell = new Celle();
-        rutene[rad][kolonne] = cell;
-        int randomInt = (int)(Math.random()*3);
-        if (randomInt == 3){
+        
+        
+        if (Math.random() <= 0.3333){
             cell.settLevende();
         }
-        
+        this.rutene[rad][kolonne] = cell;
     }
     public void fyllMedTilfeldigeCeller(){
         for (int i = 0; i < antRader; i++){
-            for (int x = 0; x < antKolonner;i++){
+            for (int x = 0; x < antKolonner;x++){
                 lagCelle(i,x);
             }
         }
     }
     public Celle hentCelle(int rad, int kolonne){
-        if (rad > antRader || kolonne > antKolonner){
+        if (rad >= antRader || kolonne >= antKolonner){
             return null;
-        } else if( rad < antRader || kolonne < antKolonner){
+        } else if( rad < 0 || kolonne < 0){
             return null;
         } else{
             return rutene[rad][kolonne];
@@ -40,13 +37,39 @@ class Rutenett{
     }
     public void tegnRutenett(){
         for (int i = 0; i < antRader; i++){
-            for (int x = 0; i < antKolonner; i++){
-                System.out.print(rutene[i][x]);
+            System.out.print("");
+            for (int x = 0; x < antKolonner; x++){
+                System.out.print("[");
+                System.out.print(rutene[i][x].hentStatusTegn());
+                System.out.print("]");
             }
+            System.out.println();
         }
     }
     public void settNaboer(int rader, int kolonner){
-        Celle cell = rutene [rader][kolonner]
-        cell.leggTilNabo(nabo1);
+        Celle cell = hentCelle(rader,kolonner);
+        Celle nabo = new Celle();
+        cell.leggTilNabo(nabo);
+            
+           
+        
+    }
+    public void kobleAlleCeller(){
+        for (int r = 0; r < antRader; r++){
+            for (int k = 0; k < antKolonner; k++ ){
+                settNaboer(r,k);
+            }
+        }
+    }
+    public int antallLevende(){
+        int teller = 0;
+        for (int r = 0; r < antRader; r++){
+            for (int k = 0; k < antKolonner; k++ ){
+                if (rutene[r][k].erLevende()){
+                teller ++;
+            }
+        }
+    }
+    return teller;
     }
 }

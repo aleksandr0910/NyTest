@@ -135,11 +135,11 @@ class TestRutenett {
 	System.out.println("** Test Rutenett **");
 
 	testKonstruktoerUtenRutenett();
-	// testFyllMedTilfeldigeCeller();
-	// testHentCelle();
-	// testTegnRutenett();
-	// testSettNaboer();
-	// testKobleAlleCeller();
-	// testAntallLevende();
+	testFyllMedTilfeldigeCeller();
+	testHentCelle();
+	testTegnRutenett();
+	testSettNaboer();
+	testKobleAlleCeller();
+	testAntallLevende();
     }
 }
