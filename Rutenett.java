@@ -48,9 +48,16 @@ class Rutenett{
     }
     public void settNaboer(int rader, int kolonner){
         Celle cell = hentCelle(rader,kolonner);
-        Celle nabo = new Celle();
-        cell.leggTilNabo(nabo);
-            
+        for (int y = -1; y < 2;y++){
+            for (int x = -1; x < 2; x++){
+                Celle nabo = hentCelle(rader + y,x + kolonner);
+                if (!(y == 0 && x == 0)){
+                    if (nabo != null){
+                        cell.leggTilNabo(nabo);
+                    }
+                }
+            }
+        }
            
         
     }
